@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cenas ofendidites</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #e63946;
+        --primary-hover: #d62828;
+        --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        --card-bg: #ffffff;
+        --text-dark: #0f172a;
+        --text-muted: #64748b;
+        --border-color: #e2e8f0;
+        --accent-glow: rgba(230, 57, 70, 0.15);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family:
+          "Plus Jakarta Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+      }
+
+      body {
+        background: var(--bg-gradient);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 12px;
+        color: var(--text-dark);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 520px;
+        background: var(--card-bg);
+        border-radius: 24px;
+        padding: 32px 24px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .header .badge {
+        display: inline-block;
+        background: #ffe5e7;
+        color: var(--primary);
+        font-size: 13px;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 12px;
+      }
+
+      .header h1 {
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--text-dark);
+        line-height: 1.2;
+        margin-bottom: 8px;
+      }
+
+      .header p {
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+      }
+
+      .input-control {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 15px;
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        outline: none;
+        transition: all 0.2s ease;
+        background-color: #f8fafc;
+        color: var(--text-dark);
+      }
+
+      .input-control:focus {
+        border-color: var(--primary);
+        background-color: #ffffff;
+        box-shadow: 0 0 0 4px var(--accent-glow);
+      }
+
+      select.input-control {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2064748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 18px;
+        padding-right: 40px;
+      }
+
+      textarea.input-control {
+        min-height: 90px;
+        resize: vertical;
+      }
+
+      /* Custom Slider Styling */
+      .slider-box {
+        background: #f8fafc;
+        border: 2px solid var(--border-color);
+        border-radius: 14px;
+        padding: 14px 16px;
+        transition: border-color 0.2s;
+      }
+
+      .slider-box:focus-within {
+        border-color: var(--primary);
+      }
+
+      .slider-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .slider-header label {
+        margin-bottom: 0;
+        font-size: 14px;
+      }
+
+      .slider-value {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--primary);
+        background: #ffe5e7;
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none;
+        width: 100%;
+        height: 8px;
+        border-radius: 4px;
+        background: #cbd5e1;
+        outline: none;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--primary);
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(230, 57, 70, 0.4);
+        transition: transform 0.1s;
+      }
+
+      input[type="range"]::-webkit-slider-thumb:hover {
+        transform: scale(1.15);
+      }
+
+      .btn-submit {
+        width: 100%;
+        background: var(--primary);
+        color: #ffffff;
+        border: none;
+        border-radius: 14px;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: 10px;
+        box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+      }
+
+      .btn-submit:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+      }
+
+      .btn-submit:disabled {
+        background: #94a3b8;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+      }
+
+      #mensaje {
+        display: none;
+        margin-top: 16px;
+        padding: 14px;
+        background: #dcfce7;
+        border: 1px solid #86efac;
+        color: #166534;
+        border-radius: 12px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 15px;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .divider {
+        height: 1px;
+        background: var(--border-color);
+        margin: 24px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span class="badge">🏆 Liga Ofendiditos</span>
+        <h1>Evaluación de la Cena</h1>
+        <p>
+          Valora la experiencia y vota para la clasificación anual. El ganador
+          será invitado a un desayuno por los perdedores al finalizar la ronda
+        </p>
+      </div>
+
+      <form id="encuestaForm">
+        <div class="form-group">
+          <label for="Mes">Mes de la cena</label>
+          <select name="Mes" id="Mes" class="input-control" required>
+            <option value="" disabled selected>Selecciona el mes...</option>
+            <option value="Enero">Enero</option>
+            <option value="Febrero">Febrero</option>
+            <option value="Marzo">Marzo</option>
+            <option value="Abril">Abril</option>
+            <option value="Mayo">Mayo</option>
+            <option value="Junio">Junio</option>
+            <option value="Julio">Julio</option>
+            <option value="Agosto">Agosto</option>
+            <option value="Septiembre">Septiembre</option>
+            <option value="Octubre">Octubre</option>
+            <option value="Noviembre">Noviembre</option>
+            <option value="Diciembre">Diciembre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="Organizador">Organizador (quien eligió el sitio)</label>
+          <select
+            name="Organizador"
+            id="Organizador"
+            class="input-control"
+            required
+          >
+            <option value="" disabled selected>
+              Selecciona el organizador...
+            </option>
+            <option value="Lascas">Lascas</option>
+            <option value="Pixel">Pixel</option>
+            <option value="Bryce">Bryce</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="Votante">Tu Nombre (Votante)</label>
+          <select name="Votante" id="Votante" class="input-control" required>
+            <option value="" disabled selected>Selecciona el votante...</option>
+            <option value="Lascas">Lascas</option>
+            <option value="Pixel">Pixel</option>
+            <option value="Bryce">Bryce</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="Restaurante">Nombre del Restaurante</label>
+          <input
+            type="text"
+            name="Restaurante"
+            id="Restaurante"
+            class="input-control"
+            placeholder="Ej. Taberna La Sorpresa"
+            required
+          />
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- PUNTUACIONES (DESLIZADORES) -->
+        <div class="form-group">
+          <div class="slider-box">
+            <div class="slider-header">
+              <label for="Comida">🍲 Comida (1-10)</label>
+              <span class="slider-value" id="val-Comida">5</span>
+            </div>
+            <input
+              type="range"
+              name="Comida"
+              id="Comida"
+              min="1"
+              max="10"
+              value="5"
+              oninput="
+                document.getElementById('val-Comida').innerText = this.value
+              "
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="slider-box">
+            <div class="slider-header">
+              <label for="Ambiente">✨ Ambiente / Local (1-10)</label>
+              <span class="slider-value" id="val-Ambiente">5</span>
+            </div>
+            <input
+              type="range"
+              name="Ambiente"
+              id="Ambiente"
+              min="1"
+              max="10"
+              value="5"
+              oninput="
+                document.getElementById('val-Ambiente').innerText = this.value
+              "
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="slider-box">
+            <div class="slider-header">
+              <label for="Precio">💶 Calidad / Precio (1-10)</label>
+              <span class="slider-value" id="val-Precio">5</span>
+            </div>
+            <input
+              type="range"
+              name="Precio"
+              id="Precio"
+              min="1"
+              max="10"
+              value="5"
+              oninput="
+                document.getElementById('val-Precio').innerText = this.value
+              "
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="slider-box">
+            <div class="slider-header">
+              <label for="Sorpresa">🎁 Factor Sorpresa (1-10)</label>
+              <span class="slider-value" id="val-Sorpresa">5</span>
+            </div>
+            <input
+              type="range"
+              name="Sorpresa"
+              id="Sorpresa"
+              min="1"
+              max="10"
+              value="5"
+              oninput="
+                document.getElementById('val-Sorpresa').innerText = this.value
+              "
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="slider-box">
+            <div class="slider-header">
+              <label for="Velada">🎉 Valoración Velada / Vaciles (1-10)</label>
+              <span class="slider-value" id="val-Velada">5</span>
+            </div>
+            <input
+              type="range"
+              name="ValoracionVelada"
+              id="Velada"
+              min="1"
+              max="10"
+              value="5"
+              oninput="
+                document.getElementById('val-Velada').innerText = this.value
+              "
+            />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- COMENTARIOS -->
+        <div class="form-group">
+          <label for="Comentarios">💬 Comentarios / Crítica libre</label>
+          <textarea
+            name="Comentarios"
+            id="Comentarios"
+            class="input-control"
+            placeholder="Escribe aquí las anécdotas, rajes o piropos de la noche..."
+          ></textarea>
+        </div>
+
+        <!-- CAMBIO AQUÍ: Añadido name="Pin" -->
+        <div class="form-group">
+          <label for="Pin">PIN Personal</label>
+          <input
+            type="password"
+            id="Pin"
+            name="Pin"
+            class="input-control"
+            placeholder="Introduce tu PIN personal"
+            required
+          />
+        </div>
+
+        <button type="submit" id="btnEnviar" class="btn-submit">
+          Enviar Votación 🚀
+        </button>
+        <div id="mensaje">¡Votación registrada con éxito! 🏆</div>
+      </form>
+    </div>
+
+    <script>
+      // PEGA AQUÍ LA URL QUE COPIASTE DE GOOGLE APPS SCRIPT
+      const GOOGLE_URL =
+        "https://script.google.com/macros/s/AKfycbxw-v7pCQOh0X0JDcsowVF6GiWmzO0wh1casxspIlYzKFHQMnKNxxZF-XT1nYlv5pKe/exec";
+
+      const form = document.getElementById("encuestaForm");
+      const btn = document.getElementById("btnEnviar");
+      const msg = document.getElementById("mensaje");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        btn.innerText = "Guardando voto... ⏳";
+        btn.disabled = true;
+
+        fetch(GOOGLE_URL, {
+          method: "POST",
+          body: new URLSearchParams(new FormData(form)),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === "success") {
+              form.reset();
+              document
+                .querySelectorAll(".slider-value")
+                .forEach((el) => (el.innerText = "5"));
+              msg.innerText = data.message;
+              msg.style.background = "#dcfce7";
+              msg.style.color = "#166534";
+              msg.style.display = "block";
+            } else {
+              alert(data.message); // Muestra alertas de "PIN incorrecto" o "Ya has votado este mes"
+            }
+            btn.innerText = "Enviar Votación 🚀";
+            btn.disabled = false;
+          })
+          .catch((error) => {
+            alert("Error de conexión al enviar el voto.");
+            btn.innerText = "Enviar Votación 🚀";
+            btn.disabled = false;
+          });
+      });
+    </script>
+  </body>
+</html>
